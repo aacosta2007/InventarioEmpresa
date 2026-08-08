@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Movimientos - Inventario</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: {
+      primary: { DEFAULT: '#1E3A8A', dark: '#152a63', light: '#3b5bc0' },
+      accent: '#F59E0B'
+    } } } };
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="app-navbar"></div>
+
+    <div class="main-content">
+      <div class="main-inner">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Movimientos</h1>
+            <p class="page-subtitle">Registra entradas y salidas de stock</p>
+          </div>
+        </div>
+
+        <section class="mb-6">
+          <div class="card">
+            <h2 class="font-semibold mb-3">Registrar movimiento</h2>
+            <form id="movimiento-form" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div class="field">
+                <label class="field-label">Producto</label>
+                <select name="productoId" required></select>
+              </div>
+              <div class="field">
+                <label class="field-label">Tipo</label>
+                <select name="tipo" required>
+                  <option value="entrada">Entrada</option>
+                  <option value="salida">Salida</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label">Cantidad</label>
+                <input name="cantidad" type="number" min="1" required />
+              </div>
+              <div class="field">
+                <label class="field-label">Nota</label>
+                <input name="nota" placeholder="Opcional" />
+              </div>
+              <div class="md:col-span-2">
+                <div id="movimiento-msg" class="alert alert-error hidden mb-2"></div>
+                <button class="btn-primary">Registrar movimiento</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="font-semibold mb-3">Historial</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Fecha</th><th>Tipo</th><th>Producto</th><th>Cantidad</th><th>Usuario</th><th>Nota</th>
+                </tr>
+              </thead>
+              <tbody id="movimientos-tbody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initNavbar } from '../js/components/navbar.js';
+    import { initMovimientos } from '../js/controllers/movimientosController.js';
+    initNavbar();
+    initMovimientos();
+  </script>
+</body>
+</html>

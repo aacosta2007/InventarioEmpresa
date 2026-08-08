@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Inventario - Inicio</title>
+    <script type="module" src="./js/app.js" defer></script>
+  </head>
+  <body>
+    <script>
+      // Redirige según sesión
+      const session = localStorage.getItem('session');
+      if (session) {
+        window.location.href = './pages/dashboard.html';
+      } else {
+        window.location.href = './pages/login.html';
+      }
+    </script>
+  </body>
+</html>

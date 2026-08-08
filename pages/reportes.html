@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reportes - Inventario</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: {
+      primary: { DEFAULT: '#1E3A8A', dark: '#152a63', light: '#3b5bc0' },
+      accent: '#F59E0B'
+    } } } };
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="app-navbar"></div>
+
+    <div class="main-content">
+      <div class="main-inner">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Reportes</h1>
+            <p class="page-subtitle">Estadísticas del inventario (solo administradores)</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="card">
+            <div class="metric-label">Valor total del inventario</div>
+            <div id="total-valor" class="metric-value">0</div>
+          </div>
+
+          <div class="card">
+            <div class="metric-label mb-2">Productos con stock bajo</div>
+            <ul id="stock-bajo-list" class="text-sm divide-y divide-slate-100"></ul>
+          </div>
+
+          <div class="card">
+            <div class="metric-label mb-2">Productos más movidos</div>
+            <ul id="top-movidos" class="text-sm divide-y divide-slate-100"></ul>
+          </div>
+        </div>
+
+        <section class="mt-6">
+          <div class="card">
+            <h3 class="font-semibold mb-2">Distribución por categoría</h3>
+            <ul id="por-categoria" class="text-sm divide-y divide-slate-100"></ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initNavbar } from '../js/components/navbar.js';
+    import { initReportes } from '../js/controllers/reportesController.js';
+    initNavbar();
+    initReportes();
+  </script>
+</body>
+</html>
