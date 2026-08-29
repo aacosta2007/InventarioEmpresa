@@ -1,3 +1,7 @@
+ESTUDIANTES:<br>
+-Adrian Alejandro Acosta Saavedra<br>
+-Escobar González Andrés
+
 # Sistema de Gestión de Inventario
 
 Proyecto: Aplicación web de gestión de inventario (vanilla JS + Tailwind + localStorage).
